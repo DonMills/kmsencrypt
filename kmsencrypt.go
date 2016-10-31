@@ -86,8 +86,8 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{
 					Name:        "c",
-					Usage:       "The customer master key id - can set with S3ENCRYPT_CMKID environment variable",
-					EnvVar:      "S3ENCRYPT_CMKID",
+					Usage:       "The customer master key id - can set with KMSENCRYPT_CMKID environment variable",
+					EnvVar:      "KMSENCRYPT_CMKID",
 					Destination: &cmkID,
 				},
 			},
