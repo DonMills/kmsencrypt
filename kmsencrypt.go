@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"./awsfuncs"
-	"./filefuncs"
-	"github.com/DonMills/s3encrypt/encryption"
-	"github.com/DonMills/s3encrypt/errorhandle"
+	"github.com/DonMills/kmsencrypt/awsfuncs"
+	"github.com/DonMills/kmsencrypt/encryption"
+	"github.com/DonMills/kmsencrypt/errorhandle"
+	"github.com/DonMills/kmsencrypt/filefuncs"
 
 	"github.com/urfave/cli"
 )
@@ -50,7 +50,7 @@ func main() {
 
 	app := cli.NewApp()
 	app.Name = "kmsencrypt"
-	app.Usage = "Send and receive encrypted files in S3"
+	app.Usage = "Encrypt and decrypt files using KMS provided keys"
 	app.HelpName = "kmsencrypt"
 	app.UsageText = "kmsencrypt [command] {command specific options}"
 	app.ArgsUsage = "kmsencrypt [command]"
@@ -66,7 +66,7 @@ func main() {
 		{
 			Name:      "decrypt",
 			Aliases:   []string{"d"},
-			Usage:     "Fetch and decrypt a file from S3",
+			Usage:     "Decrypt a file encrypted with kmsencrypt",
 			ArgsUsage: "[localfilename] [context]",
 			Action: func(c *cli.Context) error {
 				if len(c.Args()) < 2 {
@@ -81,7 +81,7 @@ func main() {
 		{
 			Name:      "encrypt",
 			Aliases:   []string{"e"},
-			Usage:     "Fetch and decrypt a file from S3",
+			Usage:     "Generate a KMS key and encrypt a file",
 			ArgsUsage: "[localfilename] [context]",
 			Flags: []cli.Flag{
 				cli.StringFlag{
