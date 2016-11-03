@@ -25,6 +25,7 @@ func SplitEncFile(filedata []byte) ([]byte, []byte, []byte) {
 	returnslice := bytes.SplitN(decodeddata, sep, 3)
 	key := returnslice[0]
 	iv := returnslice[1]
-	data := returnslice[2]
+	suffix := []byte{0}
+	data := bytes.TrimSuffix(returnslice[2], suffix)
 	return data, iv, key
 }
