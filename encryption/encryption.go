@@ -45,3 +45,13 @@ func EncryptFile(data []byte, key []byte) ([]byte, []byte) {
 	mode.CryptBlocks(ciphertext, pmessage)
 	return ciphertext, iv
 }
+
+// GenerateDataKey Does what's on the tin, generates the data encryption key
+func GenerateDataKey() []byte {
+	key := make([]byte, 16)
+	_, err := rand.Read(key)
+	if err != nil {
+		errorhandle.GenError(errors.New("GenerateDataKey - There was a key generation error"))
+	}
+	return key
+}
