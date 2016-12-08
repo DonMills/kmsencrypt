@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/donmills/kmsencrypt)](https://goreportcard.com/report/github.com/donmills/kmsencrypt)
+
 # kmsencrypt
 A tool designed to do KMS based envelope encryption of files.
 ___
