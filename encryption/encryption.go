@@ -16,7 +16,7 @@ import (
 var BlockSize = aes.BlockSize
 
 // DecryptFile This function uses the decrypted data encryption key and the
-// retrieved IV from the S3 metadata to decrypt the data file
+// retrieved IV to decrypt the data file
 func DecryptFile(data []byte, iv []byte, key []byte) []byte {
 	block, err := aes.NewCipher(key)
 	if err != nil {
